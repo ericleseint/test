@@ -51,12 +51,7 @@ Content-Type: text/json
   "status_description": "l'établissement est créé, l'upload des bases est possible"
 }
 ```
-```
-{
-  "status": "LOCKED",
-  "status_description": "les bases de données sont en cours d'installation"
-}
-```
+
 ```
 {
   "status": "TO_OPEN",
