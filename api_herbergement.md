@@ -20,7 +20,7 @@ GET /clients/V1/{RNE}
 
 
 ### Réponse
-* l'établissement n'existe pas 
+* l'établissement n'existe pas
 ```
 Status : 404 Resource not found
 Content-Type: text/json
@@ -99,7 +99,7 @@ Content-Type: text/json
 }
 ```
 
-## Création de l'hébergement 
+## Création de l'hébergement
 ```
 POST /clients/V1/{RNE}
 ```
@@ -113,10 +113,11 @@ POST /clients/V1/{RNE}
 | GRIFFE| string | griffe d'installation de BCDI |
 | CODE      | string | code d'installation de BCDI |
 | TYPE_VERSION      | string | Version de BCDI à installer (CL/SP) |
+| AGRICOLE      | string | Etablissement agricole 0 / 1 |
 
 
 ```
-Status : 202 Accepted 
+Status : 202 Accepted
 Content-Type: text/json
 ```
 ```
@@ -127,7 +128,7 @@ Content-Type: text/json
 ```
 
 
-## Modification de l'hébergement 
+## Modification de l'hébergement
 _Cas d'un changement de griffe, changement de version_
 ```
 PUT /clients/V1/{RNE}
@@ -142,9 +143,10 @@ PUT /clients/V1/{RNE}
 | GRIFFE| string | griffe d'installation de BCDI |
 | CODE      | string | code d'installation de BCDI |
 | TYPE_VERSION      | string | Version de BCDI à installer (CL/SP) |
+| AGRICOLE      | string | Etablissement agricole 0 / 1 |
 
 ```
-Status : 202 Accepted 
+Status : 202 Accepted
 Content-Type: text/json
 ```
 ```
@@ -154,7 +156,7 @@ Content-Type: text/json
 }
 ```
 
-## On ouvre ou on ferme le port de communication 
+## On ouvre ou on ferme le port de communication
 _Cas de fermeture du service en cas d'abonnement périmé_
 ```
 PATCH /clients/V1/{RNE}
@@ -169,7 +171,7 @@ PATCH /clients/V1/{RNE}
 | STATE| string | (OPEN/CLOSE) |
 
 ```
-Status : 202 Accepted 
+Status : 202 Accepted
 Content-Type: text/json
 ```
 ```
@@ -186,7 +188,7 @@ Content-Type: text/json
 ```
 
 
-## Suppression de l'hébergement 
+## Suppression de l'hébergement
 ```
 DELETE /clients/V1/{RNE}
 ```
@@ -200,7 +202,7 @@ DELETE /clients/V1/{RNE}
 
 ### Réponse
 ```
-Status : 202 Accepted 
+Status : 202 Accepted
 Content-Type: text/json
 ```
 ```
@@ -236,7 +238,7 @@ Content-Type: text/json
 {"databaseBCDI":{"1":{"state":"UPLOADED","name":"Principale"},"2":{"state":"INSTALLED","name":"manuel"},"3":{"state":"ERROR","name":"test"}}}
 ```
 
-## Uploader une base BCDI 
+## Uploader une base BCDI
 
 ```
 POST /databaseBCDI/V1/{RNE}/{id}
@@ -267,7 +269,7 @@ Content-Type: text/json
 _note : dans le cas d'une base déjà existante, on force la MAJ de la base en réalisant un nouveau POST_
 
 
-## Supprimer une base BCDI précédemment uploadée 
+## Supprimer une base BCDI précédemment uploadée
 _ne se fait que quand le statut de la base est UPLOADED ou INSTALLED
 ```
 DELETE /databaseBCDI/V1/{RNE}/{id}
@@ -291,7 +293,7 @@ Content-Type: text/json
 {"databaseBCDI":{"1":{"state":"TO_DELETE","name":"Principale"}}}
 ```
 
-## Modifier une base BCDI précédemment uploadée 
+## Modifier une base BCDI précédemment uploadée
 ```
 PUT /databaseBCDI/V1/{RNE}/{id}
 ```
@@ -322,7 +324,7 @@ Content-Type: text/json
 }
 ```
 
-## Valider la mise en production des bases précédemment uploadées 
+## Valider la mise en production des bases précédemment uploadées
 _note : dès qu'au moins un upload est valide, on peut proposer à l'établissement de mettre en production ces bases (techniquement elles le sont déjà) et d'indiquer quelle est la base qui est exportable vers esidoc_
 
 ```
