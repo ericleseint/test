@@ -108,6 +108,7 @@ POST /clients/V1/{RNE}
 
 | Nom  			| Type           | Description  |
 | ------------- |:-------------:| -----:|
+|Authorization| string | token |
 | RNE      | string | code RNE de l'établissement |
 | GRIFFE| string | griffe d'installation de BCDI |
 | CODE      | string | code d'installation de BCDI |
@@ -136,6 +137,7 @@ PUT /clients/V1/{RNE}
 
 | Nom  			| Type           | Description  |
 | ------------- |:-------------:| -----:|
+|Authorization| string | token |
 | RNE      | string | code RNE de l'établissement |
 | GRIFFE| string | griffe d'installation de BCDI |
 | CODE      | string | code d'installation de BCDI |
@@ -162,6 +164,7 @@ PATCH /clients/V1/{RNE}
 
 | Nom  			| Type           | Description  |
 | ------------- |:-------------:| -----:|
+|Authorization| string | token |
 | RNE      | string | code RNE de l'établissement |
 | STATE| string | (OPEN/CLOSE) |
 
@@ -192,6 +195,7 @@ DELETE /clients/V1/{RNE}
 
 | Nom  			| Type           | Description  |
 | ------------- |:-------------:| -----:|
+|Authorization| string | token |
 | RNE      | string | code RNE de l'établissement |
 
 ### Réponse
@@ -241,6 +245,7 @@ POST /databaseBCDI/V1/{RNE}/{id}
 
 | Name        | Type           | Description  |
 | ------------- |:-------------:| -----:|
+|Authorization| string | token |
 | RNE      | string | RNE de l'établissement |
 | id | integer | numéro auto-incrément |
 | nombase| string | nom usuel de la base |
@@ -271,6 +276,7 @@ DELETE /databaseBCDI/V1/{RNE}/{id}
 
 | Name        | Type           | Description  |
 | ------------- |:-------------:| -----:|
+|Authorization| string | token |
 | RNE      | string | RNE de l'établissement |
 | id | integer | numéro de l'upload à supprimer |
 
@@ -292,7 +298,9 @@ PUT /databaseBCDI/V1/{RNE}/{id}
 ### Paramètres
 
 | Name        | Type           | Description  |
-| ------------- |:-------------:| -----:|
+| ------------- |:-------------:
+| -----:|
+|Authorization| string | token |
 | RNE      | string | RNE de l'établissement |
 | id | integer | numéro de l'upload à modifier |
 | nombase| string | nom usuel de la base |
@@ -324,6 +332,7 @@ POST /databaseBCDI/V1/{RNE}/accept/{id}
 
 | Name        | Type           | Description  |
 | ------------- |:-------------:| -----:|
+|Authorization| string | token |
 | RNE      | string | RNE de l'établissement |
 | id | integer | id de la base qui sera la base exportée vers esidoc |
 
@@ -341,7 +350,32 @@ Content-Type: text/json
 ```
 
 
+## Création d'un token pour les appels PUT/POST/DELETE
+_note : pour sécuriser les appels PUT/POST/DELETE. **cette appel doit être également sécurisé en s'asurant que seul la cyberlibrairie est en mesure de le réaliser.**
 
+```
+GET /createToken/V1/{RNE}
+```
+### Paramètres
+
+| Name        | Type           | Description  |
+| ------------- |:-------------:| -----:|
+| RNE      | string | RNE de l'établissement |
+
+
+### Réponse
+
+```
+Status: 200 OK
+Content-Type: text/json
+```
+```
+
+{
+  "token": "AAAAAAAAAAAAAAAAAA"
+}
+
+```
 
 
 
