@@ -9,7 +9,7 @@ https://api.hebergement
 ## Etat de l'avancement de l'hébergement
 
 ```
-GET /clients/V1/{RNE}
+GET /clients/V1/
 ```
 
 ### Paramètres
@@ -101,7 +101,7 @@ Content-Type: text/json
 
 ## Création de l'hébergement
 ```
-POST /clients/V1/{RNE}
+POST /clients/V1/
 ```
 
 ### Paramètres
@@ -131,7 +131,7 @@ Content-Type: text/json
 ## Modification de l'hébergement
 _Cas d'un changement de griffe, changement de version_
 ```
-PUT /clients/V1/{RNE}
+PUT /clients/V1/
 ```
 
 ### Paramètres
@@ -159,7 +159,7 @@ Content-Type: text/json
 ## On ouvre ou on ferme le port de communication
 _Cas de fermeture du service en cas d'abonnement périmé_
 ```
-PATCH /clients/V1/{RNE}
+PATCH /clients/V1/
 ```
 
 ### Paramètres
@@ -190,7 +190,7 @@ Content-Type: text/json
 
 ## Suppression de l'hébergement
 ```
-DELETE /clients/V1/{RNE}
+DELETE /clients/V1/
 ```
 
 ### Paramètres
@@ -218,7 +218,7 @@ _on propose de 1 à X téléchargement, durant cette phase, il peut changer d'av
 _4 états, UPLOADED : présent mais jamais joué, INSTALLED  : présent, joué, validé, ERROR : présent, joué, en erreur, TO_DELETE : en cours de suppression _
 
 ```
-GET /databaseBCDI/V1/{RNE}/
+GET /databaseBCDI/V1/
 ```
 ### Paramètres
 
@@ -241,7 +241,7 @@ Content-Type: text/json
 ## Uploader une base BCDI
 
 ```
-POST /databaseBCDI/V1/{RNE}/{id}
+POST /databaseBCDI/V1/
 ```
 ### Paramètres
 
@@ -272,7 +272,7 @@ _note : dans le cas d'une base déjà existante, on force la MAJ de la base en r
 ## Supprimer une base BCDI précédemment uploadée
 _ne se fait que quand le statut de la base est UPLOADED ou INSTALLED
 ```
-DELETE /databaseBCDI/V1/{RNE}/{id}
+DELETE /databaseBCDI/V1/
 ```
 ### Paramètres
 
@@ -295,13 +295,12 @@ Content-Type: text/json
 
 ## Modifier une base BCDI précédemment uploadée
 ```
-PUT /databaseBCDI/V1/{RNE}/{id}
+PUT /databaseBCDI/V1/
 ```
 ### Paramètres
 
 | Name        | Type           | Description  |
-| ------------- |:-------------:
-| -----:|
+| ------------- |:-------------:| -----:|
 |Authorization| string | token |
 | RNE      | string | RNE de l'établissement |
 | id | integer | numéro de l'upload à modifier |
@@ -328,7 +327,7 @@ Content-Type: text/json
 _note : dès qu'au moins un upload est valide, on peut proposer à l'établissement de mettre en production ces bases (techniquement elles le sont déjà) et d'indiquer quelle est la base qui est exportable vers esidoc_
 
 ```
-POST /databaseBCDI/V1/{RNE}/accept/{id}
+POST /databaseBCDI/V1/accept/
 ```
 ### Paramètres
 
@@ -336,7 +335,7 @@ POST /databaseBCDI/V1/{RNE}/accept/{id}
 | ------------- |:-------------:| -----:|
 |Authorization| string | token |
 | RNE      | string | RNE de l'établissement |
-| id | integer | id de la base qui sera la base exportée vers esidoc |
+| id | integer | id de la base qui sera la base exportée vers esidoc | 
 
 
 ### Réponse
@@ -356,7 +355,7 @@ Content-Type: text/json
 _note : pour sécuriser les appels PUT/POST/DELETE. **cette appel doit être également sécurisé en s'asurant que seul la cyberlibrairie est en mesure de le réaliser.**
 
 ```
-GET /createToken/V1/{RNE}
+GET /createToken/V1/
 ```
 ### Paramètres
 
